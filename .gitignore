@@ -1,0 +1,32 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Spark / Hadoop / data outputs
+spark-warehouse/
+metastore_db/
+derby.log
+hadoop_*/
+postgres_datamart/
+
+# Big input data is not committed; instructions to download it are in the README
+source/olist/*.csv
+jars/*.jar
+
+# Build / Remotion
+node_modules/
+out/
+video/remotion-project/out/
+video/remotion-project/build/
+*.log
