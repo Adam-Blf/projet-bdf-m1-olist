@@ -1,0 +1,50 @@
+2026-03-22 09:14:02,341 [INFO] feeder :: ======================================================================
+2026-03-22 09:14:02,342 [INFO] feeder :: Olist FEEDER (bronze layer) - starting
+2026-03-22 09:14:02,343 [INFO] feeder :: source_dir     = file:///source/olist
+2026-03-22 09:14:02,343 [INFO] feeder :: raw_base       = hdfs://namenode:9000/data/raw/olist
+2026-03-22 09:14:02,343 [INFO] feeder :: ingestion_date = 2026-03-22
+2026-03-22 09:14:02,344 [INFO] feeder :: repartition    = 4
+2026-03-22 09:14:02,344 [INFO] feeder :: tables         = ALL
+2026-03-22 09:14:02,344 [INFO] feeder :: ======================================================================
+2026-03-22 09:14:08,910 [INFO] feeder :: Spark application id = app-20260322091408-0001
+2026-03-22 09:14:08,911 [INFO] feeder :: Spark UI url         = http://spark-master:4040
+2026-03-22 09:14:08,915 [INFO] feeder :: --- Ingesting table 'customers' from file:///source/olist/olist_customers_dataset.csv ---
+2026-03-22 09:14:14,802 [INFO] feeder :: Table 'customers': 99441 rows read, columns = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:14:14,803 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/customers partitioned by year/month/day with repartition(4)
+2026-03-22 09:14:21,477 [INFO] feeder :: Table 'customers' ingestion OK (99441 rows)
+2026-03-22 09:14:21,478 [INFO] feeder :: --- Ingesting table 'geolocation' from file:///source/olist/olist_geolocation_dataset.csv ---
+2026-03-22 09:14:34,209 [INFO] feeder :: Table 'geolocation': 1000163 rows read, columns = ['geolocation_zip_code_prefix', 'geolocation_lat', 'geolocation_lng', 'geolocation_city', 'geolocation_state', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:14:34,210 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/geolocation partitioned by year/month/day with repartition(4)
+2026-03-22 09:14:51,883 [INFO] feeder :: Table 'geolocation' ingestion OK (1000163 rows)
+2026-03-22 09:14:51,884 [INFO] feeder :: --- Ingesting table 'order_items' from file:///source/olist/olist_order_items_dataset.csv ---
+2026-03-22 09:14:58,012 [INFO] feeder :: Table 'order_items': 112650 rows read, columns = ['order_id', 'order_item_id', 'product_id', 'seller_id', 'shipping_limit_date', 'price', 'freight_value', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:14:58,013 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/order_items partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:04,557 [INFO] feeder :: Table 'order_items' ingestion OK (112650 rows)
+2026-03-22 09:15:04,558 [INFO] feeder :: --- Ingesting table 'order_payments' from file:///source/olist/olist_order_payments_dataset.csv ---
+2026-03-22 09:15:09,401 [INFO] feeder :: Table 'order_payments': 103886 rows read, columns = ['order_id', 'payment_sequential', 'payment_type', 'payment_installments', 'payment_value', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:09,402 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/order_payments partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:14,910 [INFO] feeder :: Table 'order_payments' ingestion OK (103886 rows)
+2026-03-22 09:15:14,911 [INFO] feeder :: --- Ingesting table 'order_reviews' from file:///source/olist/olist_order_reviews_dataset.csv ---
+2026-03-22 09:15:21,233 [INFO] feeder :: Table 'order_reviews': 104719 rows read, columns = ['review_id', 'order_id', 'review_score', 'review_comment_title', 'review_comment_message', 'review_creation_date', 'review_answer_timestamp', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:21,234 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/order_reviews partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:27,718 [INFO] feeder :: Table 'order_reviews' ingestion OK (104719 rows)
+2026-03-22 09:15:27,719 [INFO] feeder :: --- Ingesting table 'orders' from file:///source/olist/olist_orders_dataset.csv ---
+2026-03-22 09:15:33,401 [INFO] feeder :: Table 'orders': 99441 rows read, columns = ['order_id', 'customer_id', 'order_status', 'order_purchase_timestamp', 'order_approved_at', 'order_delivered_carrier_date', 'order_delivered_customer_date', 'order_estimated_delivery_date', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:33,402 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/orders partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:39,800 [INFO] feeder :: Table 'orders' ingestion OK (99441 rows)
+2026-03-22 09:15:39,801 [INFO] feeder :: --- Ingesting table 'products' from file:///source/olist/olist_products_dataset.csv ---
+2026-03-22 09:15:43,012 [INFO] feeder :: Table 'products': 32951 rows read, columns = ['product_id', 'product_category_name', 'product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 'product_length_cm', 'product_height_cm', 'product_width_cm', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:43,013 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/products partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:46,755 [INFO] feeder :: Table 'products' ingestion OK (32951 rows)
+2026-03-22 09:15:46,756 [INFO] feeder :: --- Ingesting table 'sellers' from file:///source/olist/olist_sellers_dataset.csv ---
+2026-03-22 09:15:48,910 [INFO] feeder :: Table 'sellers': 3095 rows read, columns = ['seller_id', 'seller_zip_code_prefix', 'seller_city', 'seller_state', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:48,911 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/sellers partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:51,483 [INFO] feeder :: Table 'sellers' ingestion OK (3095 rows)
+2026-03-22 09:15:51,484 [INFO] feeder :: --- Ingesting table 'category_translation' from file:///source/olist/product_category_name_translation.csv ---
+2026-03-22 09:15:52,609 [INFO] feeder :: Table 'category_translation': 71 rows read, columns = ['product_category_name', 'product_category_name_english', 'year', 'month', 'day', '_ingestion_ts']
+2026-03-22 09:15:52,610 [INFO] feeder :: Writing parquet to hdfs://namenode:9000/data/raw/olist/category_translation partitioned by year/month/day with repartition(4)
+2026-03-22 09:15:54,901 [INFO] feeder :: Table 'category_translation' ingestion OK (71 rows)
+2026-03-22 09:15:54,902 [INFO] feeder :: ======================================================================
+2026-03-22 09:15:54,903 [INFO] feeder :: Feeder finished. Total rows ingested = 1556417
+2026-03-22 09:15:54,903 [INFO] feeder :: All tables ingested successfully.
+2026-03-22 09:15:54,904 [INFO] feeder :: ======================================================================

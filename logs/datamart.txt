@@ -1,0 +1,33 @@
+2026-03-22 09:21:11,201 [INFO] datamart :: ======================================================================
+2026-03-22 09:21:11,202 [INFO] datamart :: Olist DATAMART (gold layer) - starting
+2026-03-22 09:21:11,203 [INFO] datamart ::   arg silver_table   = default.silver_orders_enriched
+2026-03-22 09:21:11,203 [INFO] datamart ::   arg silver_path    = None
+2026-03-22 09:21:11,204 [INFO] datamart ::   arg jdbc_url       = jdbc:postgresql://postgres-datamart:5432/olist_dm
+2026-03-22 09:21:11,204 [INFO] datamart ::   arg jdbc_user      = olist
+2026-03-22 09:21:11,205 [INFO] datamart ::   arg jdbc_password  = ***
+2026-03-22 09:21:11,205 [INFO] datamart ::   arg jdbc_driver    = org.postgresql.Driver
+2026-03-22 09:21:11,206 [INFO] datamart ::   arg log_file       = /opt/pipeline/logs/datamart.txt
+2026-03-22 09:21:11,206 [INFO] datamart :: ======================================================================
+2026-03-22 09:21:18,519 [INFO] datamart :: Spark application id = app-20260322092118-0003
+2026-03-22 09:21:18,520 [INFO] datamart :: Spark UI url         = http://spark-master:4040
+2026-03-22 09:21:18,524 [INFO] datamart :: Reading silver from Hive table default.silver_orders_enriched
+2026-03-22 09:21:24,105 [INFO] datamart :: [CACHE] silver cached, 111263 rows
+2026-03-22 09:21:24,106 [INFO] datamart :: --- Building datamart 'dm_seller_performance' ---
+2026-03-22 09:21:25,910 [INFO] datamart :: [dm_seller_performance] schema = struct<seller_id:string,seller_state:string,seller_city:string,n_orders:bigint,n_items_sold:bigint,revenue_total:double,avg_item_price:double,avg_review_score:double,avg_delivery_delay:double,freight_total:double,rank_in_state:int>
+2026-03-22 09:21:27,114 [INFO] datamart :: [JDBC] writing 3095 rows to dm_seller_performance on jdbc:postgresql://postgres-datamart:5432/olist_dm
+2026-03-22 09:21:30,807 [INFO] datamart :: [JDBC] dm_seller_performance write OK
+2026-03-22 09:21:30,808 [INFO] datamart :: --- Building datamart 'dm_customer_satisfaction' ---
+2026-03-22 09:21:32,541 [INFO] datamart :: [dm_customer_satisfaction] schema = struct<customer_state:string,n_customers:bigint,n_orders:bigint,revenue_total:double,avg_review_score:double,repeat_order_ratio:double,avg_delivery_delay:double>
+2026-03-22 09:21:33,419 [INFO] datamart :: [JDBC] writing 27 rows to dm_customer_satisfaction on jdbc:postgresql://postgres-datamart:5432/olist_dm
+2026-03-22 09:21:34,602 [INFO] datamart :: [JDBC] dm_customer_satisfaction write OK
+2026-03-22 09:21:34,603 [INFO] datamart :: --- Building datamart 'dm_product_category_revenue' ---
+2026-03-22 09:21:35,412 [INFO] datamart :: [dm_product_category_revenue] schema = struct<category_en:string,n_distinct_products:bigint,n_items_sold:bigint,revenue_total:double,avg_item_price:double,avg_review_score:double,rank_global:int>
+2026-03-22 09:21:36,209 [INFO] datamart :: [JDBC] writing 71 rows to dm_product_category_revenue on jdbc:postgresql://postgres-datamart:5432/olist_dm
+2026-03-22 09:21:37,108 [INFO] datamart :: [JDBC] dm_product_category_revenue write OK
+2026-03-22 09:21:37,109 [INFO] datamart :: --- Building datamart 'dm_monthly_sales_trends' ---
+2026-03-22 09:21:38,612 [INFO] datamart :: [dm_monthly_sales_trends] schema = struct<order_year:int,order_month:int,n_orders:bigint,revenue_total:double,avg_order_value:double,avg_review_score:double,revenue_prev_month:double,mom_growth_pct:double>
+2026-03-22 09:21:39,408 [INFO] datamart :: [JDBC] writing 25 rows to dm_monthly_sales_trends on jdbc:postgresql://postgres-datamart:5432/olist_dm
+2026-03-22 09:21:40,201 [INFO] datamart :: [JDBC] dm_monthly_sales_trends write OK
+2026-03-22 09:21:40,202 [INFO] datamart :: ======================================================================
+2026-03-22 09:21:40,202 [INFO] datamart :: Datamart layer built successfully.
+2026-03-22 09:21:40,203 [INFO] datamart :: ======================================================================

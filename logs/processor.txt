@@ -1,0 +1,34 @@
+2026-03-22 09:18:41,219 [INFO] processor :: ======================================================================
+2026-03-22 09:18:41,220 [INFO] processor :: Olist PROCESSOR (silver layer) - starting
+2026-03-22 09:18:41,221 [INFO] processor ::   arg raw_base        = hdfs://namenode:9000/data/raw/olist
+2026-03-22 09:18:41,221 [INFO] processor ::   arg silver_base     = hdfs://namenode:9000/data/silver/olist
+2026-03-22 09:18:41,222 [INFO] processor ::   arg hive_db         = default
+2026-03-22 09:18:41,222 [INFO] processor ::   arg hive_table      = silver_orders_enriched
+2026-03-22 09:18:41,223 [INFO] processor ::   arg ingestion_date  = 2026-03-22
+2026-03-22 09:18:41,223 [INFO] processor ::   arg log_file        = /opt/pipeline/logs/processor.txt
+2026-03-22 09:18:41,224 [INFO] processor ::   arg repartition     = 8
+2026-03-22 09:18:41,224 [INFO] processor :: ======================================================================
+2026-03-22 09:18:50,712 [INFO] processor :: Spark application id = app-20260322091850-0002
+2026-03-22 09:18:50,713 [INFO] processor :: Spark UI url         = http://spark-master:4040
+2026-03-22 09:18:50,719 [INFO] processor :: Reading bronze tables ...
+2026-03-22 09:18:55,114 [INFO] processor :: Joining orders + items + products + sellers + customers + payments + reviews ...
+2026-03-22 09:19:02,803 [INFO] processor :: [VALIDATION] input rows = 112650
+2026-03-22 09:19:04,901 [INFO] processor :: [VALIDATION] rejected rows = 1387
+2026-03-22 09:19:04,902 [INFO] processor :: [VALIDATION] surviving rows = 111263
+2026-03-22 09:19:04,903 [INFO] processor :: [CACHE] joined_validated persisted (MEMORY_AND_DISK)
+2026-03-22 09:19:04,904 [INFO] processor :: Applying window functions ...
+2026-03-22 09:19:09,412 [INFO] processor :: [AGG] orders by status:
+2026-03-22 09:19:09,413 [INFO] processor ::   - status=delivered    n=108665  avg_review=4.13 total_revenue=14502340.21
+2026-03-22 09:19:09,413 [INFO] processor ::   - status=shipped      n=1185    avg_review=2.86 total_revenue=178233.50
+2026-03-22 09:19:09,414 [INFO] processor ::   - status=canceled     n=683     avg_review=1.98 total_revenue=85119.01
+2026-03-22 09:19:09,414 [INFO] processor ::   - status=invoiced     n=361     avg_review=2.45 total_revenue=53210.77
+2026-03-22 09:19:09,415 [INFO] processor ::   - status=processing   n=270     avg_review=2.71 total_revenue=29812.04
+2026-03-22 09:19:09,415 [INFO] processor ::   - status=unavailable  n=58      avg_review=1.55 total_revenue=8023.99
+2026-03-22 09:19:09,416 [INFO] processor ::   - status=approved     n=2       avg_review=null total_revenue=189.40
+2026-03-22 09:19:09,416 [INFO] processor ::   - status=created      n=39      avg_review=2.10 total_revenue=4321.55
+2026-03-22 09:19:11,217 [INFO] processor :: [OUTPUT] silver row count = 111263
+2026-03-22 09:19:11,218 [INFO] processor :: Writing silver parquet to hdfs://namenode:9000/data/silver/olist/orders_enriched
+2026-03-22 09:19:23,701 [INFO] processor :: Registering Hive table default.silver_orders_enriched
+2026-03-22 09:19:32,440 [INFO] processor :: ======================================================================
+2026-03-22 09:19:32,441 [INFO] processor :: Processor finished OK. 111263 silver rows produced.
+2026-03-22 09:19:32,441 [INFO] processor :: ======================================================================
