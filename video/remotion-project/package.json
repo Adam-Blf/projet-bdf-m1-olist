@@ -1,0 +1,23 @@
+{
+  "name": "olist-bdf-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Remotion demo video for the Olist BDF M1 final project",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render src/index.ts olist-demo out/olist-bdf-demo.mp4 --concurrency=1"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.196",
+    "@remotion/cli": "4.0.196",
+    "@remotion/renderer": "4.0.196",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.196"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.5.4"
+  }
+}
