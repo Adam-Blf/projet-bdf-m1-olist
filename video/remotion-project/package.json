@@ -8,12 +8,12 @@
     "render": "remotion render src/index.ts olist-demo out/olist-bdf-demo.mp4 --concurrency=1"
   },
   "dependencies": {
-    "@remotion/bundler": "4.0.196",
-    "@remotion/cli": "4.0.196",
-    "@remotion/renderer": "4.0.196",
+    "@remotion/bundler": "4.0.454",
+    "@remotion/cli": "4.0.454",
+    "@remotion/renderer": "4.0.454",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remotion": "4.0.196"
+    "remotion": "4.0.454"
   },
   "devDependencies": {
     "@types/react": "18.3.5",
