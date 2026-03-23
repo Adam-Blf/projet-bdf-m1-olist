@@ -107,7 +107,7 @@ Notre data platform répond à 4 questions concrètes :
 | Datamart DB  | PostgreSQL 16 (Spark JDBC overwrite)                                   |
 | API          | FastAPI 0.115 + JWT (HS256) + pagination offset/limit                  |
 | Visualisation| Streamlit 1.39 + Altair (5 charts)                                     |
-| Vidéo        | Remotion 4 (TS/React) → MP4 1080p                                      |
+| Vidéo        | Screen-record Playwright des UIs Docker live → MP4 720p H.264          |
 | Orchestration| docker-compose (15 conteneurs)                                         |
 
 ## 5. Quickstart
@@ -289,7 +289,7 @@ Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 | API                                  | 2.0 | ✓ FastAPI + JWT HS256 + pagination + Swagger                           |
 | Visualisation                        | 1.5 | ✓ 5 graphiques Streamlit (>= 3 requis)                                 |
 | Architecture modulaire               | 1.0 | ✓ feeder/processor/datamart isolés, paramètres via spark-submit        |
-| Vidéo                                | 2.0 | ✓ vidéo Remotion 6 min, screen capture des UIs                         |
+| Vidéo                                | 2.0 | ✓ screen-record 5 min 20, UIs Docker live (HDFS NameNode, Spark Master, YARN RM, Streamlit) |
 | **Total**                            |**20.0**| **20.0**                                                            |
 
 ## 15. Auteurs

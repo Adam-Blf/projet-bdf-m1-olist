@@ -24,9 +24,10 @@ postgres_datamart/
 source/olist/*.csv
 jars/*.jar
 
-# Build / Remotion
+# Build artifacts
 node_modules/
 out/
-video/remotion-project/out/
-video/remotion-project/build/
 *.log
+
+# Pipeline runtime logs (the canonical snapshot is committed under logs/)
+pipeline/logs/
