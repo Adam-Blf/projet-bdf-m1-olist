@@ -1,5 +1,7 @@
 # Olist Data Platform - Big Data Frameworks (M1 DE&IA, EFREI)
 
+[![EFREI Paris](https://img.shields.io/badge/EFREI-Paris-005CA9?style=flat-square&labelColor=000000)](https://www.efrei.fr/)
+
 [![Spark](https://img.shields.io/badge/Spark-3.0.0-E25A1C?logo=apachespark&logoColor=white)](https://spark.apache.org)
 [![Hadoop](https://img.shields.io/badge/Hadoop-3.2.1-66CCFF?logo=apachehadoop&logoColor=black)](https://hadoop.apache.org)
 [![Hive](https://img.shields.io/badge/Hive-2.3.2-FDEE21?logo=apachehive&logoColor=black)](https://hive.apache.org)
