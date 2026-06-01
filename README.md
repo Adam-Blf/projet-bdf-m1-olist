@@ -44,38 +44,21 @@ Notre data platform répond à 4 questions concrètes :
 
 ## 2. Architecture
 
-```
-                            ┌──────────────────────┐
-                            │   /source/olist/*.csv │  9 fichiers, 1 556 425 lignes
-                            └──────────┬───────────┘
-                                       │
-                            spark-submit feeder.py
-                                       ▼
-        ┌────────────────────────────────────────────────────┐
-        │  HDFS  /data/raw/olist/{table}/year=/month=/day=   │   bronze (parquet)
-        └─────────────────────┬──────────────────────────────┘
-                              │
-                  spark-submit processor.py
-                  (5 règles validation, joins, windows, cache)
-                              ▼
-        ┌────────────────────────────────────────────────────┐
-        │  HDFS /data/silver/olist/orders_enriched/year=...  │   silver (parquet)
-        │  Hive table  default.silver_orders_enriched        │
-        └─────────────────────┬──────────────────────────────┘
-                              │
-                   spark-submit datamart.py
-                   (4 datamarts, JDBC overwrite)
-                              ▼
-        ┌────────────────────────────────────────────────────┐
-        │  PostgreSQL "olist_dm"                             │   gold (relational)
-        │   ├── dm_seller_performance                        │
-        │   ├── dm_customer_satisfaction                     │
-        │   ├── dm_product_category_revenue                  │
-        │   └── dm_monthly_sales_trends                      │
-        └────────────┬───────────────────────────┬───────────┘
-                     │                           │
-              FastAPI REST + JWT          Streamlit dashboard
-              (paginated)                 (5 charts)
+```mermaid
+flowchart TB
+    SRC["source/olist/*.csv<br/>9 fichiers · 1 556 425 lignes"]
+    FEED["feeder.py<br/>spark-submit · partition year/month/day"]
+    BRONZE["HDFS Bronze<br/>/data/raw/olist · parquet snappy"]
+    PROC["processor.py<br/>5 regles · 6 joins · window functions"]
+    SILVER["HDFS Silver + Hive<br/>silver_orders_enriched"]
+    MART["datamart.py<br/>4 datamarts · JDBC overwrite"]
+    GOLD["PostgreSQL olist_dm<br/>seller · satisfaction · category · trends"]
+    API["api/main.py<br/>FastAPI · JWT HS256 · pagination"]
+    VIZ["viz/app.py<br/>Streamlit · 5 graphiques"]
+
+    SRC --> FEED --> BRONZE --> PROC --> SILVER --> MART --> GOLD
+    GOLD --> API
+    GOLD --> VIZ
 ```
 
 ## 3. Dataset
