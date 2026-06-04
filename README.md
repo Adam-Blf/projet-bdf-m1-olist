@@ -285,3 +285,14 @@ Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 - **Adam Beloucif** - data engineering, Hadoop/Spark, datamarts, API, vidéo
 - **Emilien Morice** - architecture médaillon, validation rules, dashboard,
   rapport
+
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=Adam-Blf%2Fprojet-bdf-m1-olist&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Adam-Blf/projet-bdf-m1-olist&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Adam-Blf/projet-bdf-m1-olist&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Adam-Blf/projet-bdf-m1-olist&type=date&legend=top-left" />
+ </picture>
+</a>
