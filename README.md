@@ -20,8 +20,8 @@ Plateforme data **médaillon (bronze / silver / gold)** complète construite sur
 le dataset open data **Olist Brazilian E-Commerce** (~1,5 M lignes au total),
 livrée comme projet final du module **Big Data Frameworks** du M1 DE&IA EFREI.
 
-> Auteurs · **Adam Beloucif** · **Emilien Morice** · 22 mars 2026
-> Encadrant · Steve Elanga · M1-XDE709-M1-DE2-2025-2026-A
+> Auteurs - **Adam Beloucif** - **Emilien Morice** - 22 mars 2026
+> Encadrant - Steve Elanga - M1-XDE709-M1-DE2-2025-2026-A
 
 ---
 
@@ -46,15 +46,15 @@ Notre data platform répond à 4 questions concrètes :
 
 ```mermaid
 flowchart TB
-    SRC["source/olist/*.csv<br/>9 fichiers · 1 556 425 lignes"]
-    FEED["feeder.py<br/>spark-submit · partition year/month/day"]
-    BRONZE["HDFS Bronze<br/>/data/raw/olist · parquet snappy"]
-    PROC["processor.py<br/>5 regles · 6 joins · window functions"]
+    SRC["source/olist/*.csv<br/>9 fichiers - 1 556 425 lignes"]
+    FEED["feeder.py<br/>spark-submit - partition year/month/day"]
+    BRONZE["HDFS Bronze<br/>/data/raw/olist - parquet snappy"]
+    PROC["processor.py<br/>5 regles - 6 joins - window functions"]
     SILVER["HDFS Silver + Hive<br/>silver_orders_enriched"]
-    MART["datamart.py<br/>4 datamarts · JDBC overwrite"]
-    GOLD["PostgreSQL olist_dm<br/>seller · satisfaction · category · trends"]
-    API["api/main.py<br/>FastAPI · JWT HS256 · pagination"]
-    VIZ["viz/app.py<br/>Streamlit · 5 graphiques"]
+    MART["datamart.py<br/>4 datamarts - JDBC overwrite"]
+    GOLD["PostgreSQL olist_dm<br/>seller - satisfaction - category - trends"]
+    API["api/main.py<br/>FastAPI - JWT HS256 - pagination"]
+    VIZ["viz/app.py<br/>Streamlit - 5 graphiques"]
 
     SRC --> FEED --> BRONZE --> PROC --> SILVER --> MART --> GOLD
     GOLD --> API
