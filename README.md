@@ -58,6 +58,23 @@ flowchart TB
     SRC --> FEED --> BRONZE --> PROC --> SILVER --> MART --> GOLD
     GOLD --> API
     GOLD --> VIZ
+
+    classDef c0 fill:#2563eb,stroke:#1e3a8a,stroke-width:2px,color:#ffffff
+    classDef c1 fill:#7c3aed,stroke:#4c1d95,stroke-width:2px,color:#ffffff
+    classDef c2 fill:#0891b2,stroke:#164e63,stroke-width:2px,color:#ffffff
+    classDef c3 fill:#16a34a,stroke:#14532d,stroke-width:2px,color:#ffffff
+    classDef c4 fill:#d97706,stroke:#78350f,stroke-width:2px,color:#ffffff
+    classDef c5 fill:#db2777,stroke:#831843,stroke-width:2px,color:#ffffff
+    classDef c6 fill:#dc2626,stroke:#7f1d1d,stroke-width:2px,color:#ffffff
+    classDef c7 fill:#4f46e5,stroke:#312e81,stroke-width:2px,color:#ffffff
+    class SRC c0
+    class FEED c1
+    class BRONZE c2
+    class PROC c3
+    class SILVER c4
+    class MART c5
+    class GOLD c6
+    class API,VIZ c7
 ```
 
 ## 3. Dataset
