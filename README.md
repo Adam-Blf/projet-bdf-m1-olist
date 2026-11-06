@@ -1,7 +1,7 @@
 # Olist Data Platform - Big Data Frameworks (M1 DE&IA, EFREI)
 
 <!-- adam-badges:start -->
-[![commits](https://img.shields.io/github/commit-activity/t/Adam-Blf/projet-bdf-m1-olist?color=001329&label=commits&style=flat-square)](https://github.com/Adam-Blf/projet-bdf-m1-olist/commits) [![visites](https://hits.sh/github.com/Adam-Blf/projet-bdf-m1-olist.svg?style=flat-square&label=visites&color=001329)](https://hits.sh/github.com/Adam-Blf/projet-bdf-m1-olist/) [![last commit](https://img.shields.io/github/last-commit/Adam-Blf/projet-bdf-m1-olist?color=D4A437&style=flat-square&label=dernier%20push)](https://github.com/Adam-Blf/projet-bdf-m1-olist/commits) [![top language](https://img.shields.io/github/languages/top/Adam-Blf/projet-bdf-m1-olist?style=flat-square)](https://github.com/Adam-Blf/projet-bdf-m1-olist) [![license](https://img.shields.io/github/license/Adam-Blf/projet-bdf-m1-olist?style=flat-square&color=D4A437)](LICENSE)
+[![version](https://img.shields.io/badge/version-1.0.0-163767?style=flat-square)](CHANGELOG.md) [![commits](https://img.shields.io/github/commit-activity/t/Adam-Blf/projet-bdf-m1-olist?color=001329&label=commits&style=flat-square)](https://github.com/Adam-Blf/projet-bdf-m1-olist/commits) [![visites](https://hits.sh/github.com/Adam-Blf/projet-bdf-m1-olist.svg?style=flat-square&label=visites&color=001329)](https://hits.sh/github.com/Adam-Blf/projet-bdf-m1-olist/) [![last commit](https://img.shields.io/github/last-commit/Adam-Blf/projet-bdf-m1-olist?color=D4A437&style=flat-square&label=dernier%20push)](https://github.com/Adam-Blf/projet-bdf-m1-olist/commits) [![top language](https://img.shields.io/github/languages/top/Adam-Blf/projet-bdf-m1-olist?style=flat-square)](https://github.com/Adam-Blf/projet-bdf-m1-olist) [![license](https://img.shields.io/github/license/Adam-Blf/projet-bdf-m1-olist?style=flat-square&color=D4A437)](LICENSE)
 <!-- adam-badges:end -->
 
 [![EFREI Paris](https://img.shields.io/badge/EFREI-Paris-005CA9?style=flat-square&labelColor=000000)](https://www.efrei.fr/)
@@ -13,7 +13,6 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.39-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
 [![PostgreSQL](https://img.shields.io/badge/Postgres-16-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org)
 [![License](https://img.shields.io/badge/license-academic-lightgrey)]()
-[![version](https://img.shields.io/badge/version-1.0.0-blue)]()
 
 Plateforme data **médaillon (bronze / silver / gold)** complète construite sur
 le dataset open data **Olist Brazilian E-Commerce** (~1,5 M lignes au total),
@@ -24,7 +23,7 @@ livrée comme projet final du module **Big Data Frameworks** du M1 DE&IA EFREI.
 
 ---
 
-## 1. Problématique business
+## Problématique business
 
 Olist, marketplace e-commerce brésilien (équivalent local d'Amazon-Mercado),
 veut comprendre **pourquoi sa satisfaction client varie** entre régions et
@@ -41,7 +40,7 @@ Notre data platform répond à 4 questions concrètes :
 4. **Quelle est l'évolution mensuelle du chiffre d'affaires et son taux de
    croissance MoM ?** (window `lag()` sur la time-series)
 
-## 2. Architecture
+## Architecture
 
 ```mermaid
 flowchart TB
@@ -58,26 +57,20 @@ flowchart TB
     SRC --> FEED --> BRONZE --> PROC --> SILVER --> MART --> GOLD
     GOLD --> API
     GOLD --> VIZ
+    API -. "mode API" .-> VIZ
 
-    classDef c0 fill:#2563eb,stroke:#1e3a8a,stroke-width:2px,color:#ffffff
-    classDef c1 fill:#7c3aed,stroke:#4c1d95,stroke-width:2px,color:#ffffff
-    classDef c2 fill:#0891b2,stroke:#164e63,stroke-width:2px,color:#ffffff
-    classDef c3 fill:#16a34a,stroke:#14532d,stroke-width:2px,color:#ffffff
-    classDef c4 fill:#d97706,stroke:#78350f,stroke-width:2px,color:#ffffff
-    classDef c5 fill:#db2777,stroke:#831843,stroke-width:2px,color:#ffffff
-    classDef c6 fill:#dc2626,stroke:#7f1d1d,stroke-width:2px,color:#ffffff
-    classDef c7 fill:#4f46e5,stroke:#312e81,stroke-width:2px,color:#ffffff
-    class SRC c0
-    class FEED c1
-    class BRONZE c2
-    class PROC c3
-    class SILVER c4
-    class MART c5
-    class GOLD c6
-    class API,VIZ c7
+    classDef input fill:#2563eb,stroke:#1e3a8a,color:#fff
+    classDef process fill:#7c3aed,stroke:#4c1d95,color:#fff
+    classDef store fill:#f59e0b,stroke:#92400e,color:#111
+    classDef ok fill:#16a34a,stroke:#14532d,color:#fff
+    classDef error fill:#dc2626,stroke:#7f1d1d,color:#fff
+    class SRC input
+    class FEED,PROC,MART process
+    class BRONZE,SILVER,GOLD store
+    class API,VIZ ok
 ```
 
-## 3. Dataset
+## Dataset
 
 [Olist Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 - License : CC BY-NC-SA 4.0
@@ -100,7 +93,7 @@ flowchart TB
 > Pour reproduire : télécharger l'archive Kaggle et l'extraire dans
 > `source/olist/`. Les fichiers ne sont pas commit (.gitignore).
 
-## 4. Stack
+## Stack
 
 | Couche       | Techno                                                                 |
 |--------------|------------------------------------------------------------------------|
@@ -114,7 +107,7 @@ flowchart TB
 | Vidéo        | Screen-record Playwright des UIs Docker live → MP4 720p H.264          |
 | Orchestration| docker-compose (15 conteneurs)                                         |
 
-## 5. Quickstart
+## Quickstart
 
 ```bash
 # 1. Télécharger le dataset Kaggle dans source/olist/ (9 CSV)
@@ -136,7 +129,7 @@ open http://localhost:8000/docs # FastAPI Swagger
 open http://localhost:8501     # Streamlit dashboard
 ```
 
-## 6. spark-submit (paramétrable, aucun chemin codé en dur)
+## spark-submit (paramétrable, aucun chemin codé en dur)
 
 ### Bronze - feeder.py
 
@@ -187,7 +180,7 @@ open http://localhost:8501     # Streamlit dashboard
     --log-file      /opt/pipeline/logs/datamart.txt
 ```
 
-## 7. Couche Silver - 5 règles de validation
+## Couche Silver - 5 règles de validation
 
 | # | Règle                                                                |
 |---|----------------------------------------------------------------------|
@@ -202,7 +195,7 @@ Sur la couche silver les **window functions** suivantes sont appliquées :
 - `dense_rank() over (partition by seller_state, year, month order by price desc)` → `seller_state_month_rank`
 - `lag(revenue_total) over (order by order_year, order_month)` (datamart) → `mom_growth_pct`
 
-## 8. Datamarts (gold)
+## Datamarts (gold)
 
 | Datamart                       | Granularité            | Lignes |
 |--------------------------------|------------------------|-------:|
@@ -213,7 +206,7 @@ Sur la couche silver les **window functions** suivantes sont appliquées :
 
 Schémas détaillés dans `docs/rapport.md` §6.
 
-## 9. API REST sécurisée (JWT) + pagination
+## API REST sécurisée (JWT) + pagination
 
 ### Login
 
@@ -237,7 +230,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 Documentation Swagger : http://localhost:8000/docs
 
-## 10. Visualisation - Streamlit (5 graphiques)
+## Visualisation - Streamlit (5 graphiques)
 
 1. Top 15 vendeurs par CA (bar chart, couleur = état)
 2. Tendance mensuelle CA + croissance MoM (combo line + bar)
@@ -245,7 +238,7 @@ Documentation Swagger : http://localhost:8000/docs
 4. Satisfaction client par état brésilien (bar chart heatmap-style)
 5. Heatmap répartition des vendeurs (rank bucket × état)
 
-## 11. Optimisation Spark
+## Optimisation Spark
 
 - `cache()` sur les CSV bronze pendant le feeder pour éviter la double lecture
   count + write
@@ -259,7 +252,7 @@ Documentation Swagger : http://localhost:8000/docs
 
 Visible dans la **Spark UI** (Storage tab + DAG → cyan boxes).
 
-## 12. Logs
+## Logs
 
 Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 
@@ -267,7 +260,7 @@ Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 - `logs/processor.txt`  - 35 lignes, 111 263 rows silver, 1 387 rejetées
 - `logs/datamart.txt`   - 30 lignes, 4 datamarts buildés
 
-## 13. Livrables
+## Livrables
 
 | Livrable                        | Chemin                              |
 |---------------------------------|-------------------------------------|
@@ -280,7 +273,7 @@ Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 | Vidéo de démonstration          | `video/olist-bdf-demo.mp4`          |
 | README                          | ce fichier                          |
 
-## 14. Barème (auto-évaluation)
+## Barème (auto-évaluation)
 
 | Critère                              | Pts | Couvert ? |
 |--------------------------------------|----:|-----------|
@@ -296,7 +289,7 @@ Tous les jobs écrivent à la fois sur stdout et dans `pipeline/logs/*.txt` :
 | Vidéo                                | 2.0 | ✓ screen-record 5 min 20, UIs Docker live (HDFS NameNode, Spark Master, YARN RM, Streamlit) |
 | **Total**                            |**20.0**| **20.0**                                                            |
 
-## 15. Auteurs
+## Auteurs
 
 - **Adam Beloucif** - data engineering, Hadoop/Spark, datamarts, API, vidéo
 - **Emilien Morice** - architecture médaillon, validation rules, dashboard,
